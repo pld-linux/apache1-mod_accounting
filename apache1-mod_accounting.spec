@@ -1,5 +1,5 @@
 %define		mod_name	accounting
-%define 	apxs		/usr/sbin/apxs
+%define 	apxs		%{_sbindir}/apxs
 Summary:	Apache module: record traffic statistics into a database
 Summary(pl):	Modu³ do apache: zapisuje statystyki ruchu do bazy danych
 Name:		apache-mod_%{mod_name}
@@ -33,6 +33,7 @@ przychodz±ce/wychodz±ce).
 %setup -q -n mod_%{mod_name}-%{version}
 
 %build
+PATH=$PATH:%{_sbindir}
 %{__make}
 
 %install
