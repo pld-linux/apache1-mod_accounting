@@ -55,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %{apxs} -e -a -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
 if [ -f /etc/apache/apache.conf ] && ! grep -q "^Include.*mod_accounting.conf" /etc/apache/apache.conf; then
-        echo "Include /etc/apache/mod_accounting.conf" >> /etc/apache/apache.conf
+	echo "Include /etc/apache/mod_accounting.conf" >> /etc/apache/apache.conf
 fi
 if [ -f /var/lock/subsys/apache ]; then
 	/etc/rc.d/init.d/apache restart 1>&2
@@ -65,9 +65,9 @@ fi
 if [ "$1" = "0" ]; then
 	%{apxs} -e -A -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
 	umask 027
-        grep -v "^Include.*mod_accounting.conf" /etc/apache/apache.conf > \
-                /etc/apache/apache.conf.tmp
-        mv -f /etc/apache/apache.conf.tmp /etc/apache/apache.conf
+	grep -v "^Include.*mod_accounting.conf" /etc/apache/apache.conf > \
+		/etc/apache/apache.conf.tmp
+	mv -f /etc/apache/apache.conf.tmp /etc/apache/apache.conf
 	if [ -f /var/lock/subsys/apache ]; then
 		/etc/rc.d/init.d/apache restart 1>&2
 	fi
