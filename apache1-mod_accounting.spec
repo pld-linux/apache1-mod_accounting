@@ -4,7 +4,7 @@ Summary:	Apache module: record traffic statistics into a database
 Summary(pl):	Modu³ do apache: zapisuje statystyki ruchu do bazy danych
 Name:		apache-mod_%{mod_name}
 Version:	0.4
-Release:	2
+Release:	3
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://prdownloads.sourceforge.net/mod-acct/mod_accounting-%{version}.tar.gz
