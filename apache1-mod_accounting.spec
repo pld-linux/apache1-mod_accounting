@@ -1,27 +1,28 @@
 %define		mod_name	accounting
-%define 	apxs		%{_sbindir}/apxs
+%define 	apxs		%{_sbindir}/apxs1
 Summary:	Apache module: record traffic statistics into a database
 Summary(pl):	Modu³ do apache: zapisuje statystyki ruchu do bazy danych
-Name:		apache-mod_%{mod_name}
-Version:	0.4
-Release:	6
+Name:		apache1-mod_%{mod_name}
+Version:	0.5
+Release:	0.1
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://dl.sourceforge.net/mod-acct/mod_accounting-%{version}.tar.gz
-# Source0-md5:	93076acba346fb37834ada9d9f630fa4
+# Source0-md5:	fc045bbdc5ae32241765fea2967a63fb
 Source1:	%{name}.conf
 URL:		http://sourceforge.net/projects/mod-acct/
-BuildRequires:	apache(EAPI)-devel
+BuildRequires:	apache1-devel
 BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
 Requires(post,preun):	%{apxs}
 Requires(post,preun):	grep
 Requires(preun):	fileutils
-Requires:	apache(EAPI)
+Requires:	apache1
+Obsoletes:	apache-mod_%{mod_name} <= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
-%define         _sysconfdir     /etc/httpd
+%define         _sysconfdir     /etc/apache
 
 %description
 mod_accounting is a simple Apache module that can record traffic
@@ -37,7 +38,9 @@ przychodz±ce/wychodz±ce).
 
 %build
 PATH=$PATH:%{_sbindir}
-%{__make}
+%{__make} \
+	APXS=%{apxs} \
+	LIB="%{_includedir}/postgresql %{_includedir}/mysql -lpq -lmysqlclient"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -51,22 +54,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %{apxs} -e -a -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
-if [ -f /etc/httpd/httpd.conf ] && ! grep -q "^Include.*mod_accounting.conf" /etc/httpd/httpd.conf; then
-        echo "Include /etc/httpd/mod_accounting.conf" >> /etc/httpd/httpd.conf
+if [ -f /etc/apache/apache.conf ] && ! grep -q "^Include.*mod_accounting.conf" /etc/apache/apache.conf; then
+        echo "Include /etc/apache/mod_accounting.conf" >> /etc/apache/apache.conf
 fi
-if [ -f /var/lock/subsys/httpd ]; then
-	/etc/rc.d/init.d/httpd restart 1>&2
+if [ -f /var/lock/subsys/apache ]; then
+	/etc/rc.d/init.d/apache restart 1>&2
 fi
 
 %preun
 if [ "$1" = "0" ]; then
 	%{apxs} -e -A -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
 	umask 027
-        grep -v "^Include.*mod_accounting.conf" /etc/httpd/httpd.conf > \
-                /etc/httpd/httpd.conf.tmp
-        mv -f /etc/httpd/httpd.conf.tmp /etc/httpd/httpd.conf
-	if [ -f /var/lock/subsys/httpd ]; then
-		/etc/rc.d/init.d/httpd restart 1>&2
+        grep -v "^Include.*mod_accounting.conf" /etc/apache/apache.conf > \
+                /etc/apache/apache.conf.tmp
+        mv -f /etc/apache/apache.conf.tmp /etc/apache/apache.conf
+	if [ -f /var/lock/subsys/apache ]; then
+		/etc/rc.d/init.d/apache restart 1>&2
 	fi
 fi
 
