@@ -8,7 +8,7 @@ Summary:	Apache module: record traffic statistics into a database
 Summary(pl):	Modu³ do apache: zapisuje statystyki ruchu do bazy danych
 Name:		apache1-mod_%{mod_name}
 Version:	0.5
-Release:	0.4
+Release:	0.5
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://dl.sourceforge.net/mod-acct/mod_accounting-%{version}.tar.gz
@@ -60,7 +60,7 @@ if [ -f /var/lock/subsys/apache ]; then
 	/etc/rc.d/init.d/apache restart 1>&2
 fi
 
-%preun
+%postun
 if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/apache ]; then
 		/etc/rc.d/init.d/apache restart 1>&2
