@@ -33,13 +33,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
 
 %description
-mod_accounting is a simple Apache module that can record traffic statistics
-into a database (bytes in/out per http request).
+mod_accounting is a simple Apache module that can record traffic
+statistics into a database (bytes in/out per http request).
 
 %description -l pl
-mod_accounting jest prostym modu³em Apacza, s³u¿±cym do zapisywania statystyk
-ruchu do relacyjnej bazy danych (ilo¶æ bajtów wchodz±cych/wychodz±cych na
-¿adanie http)
+mod_accounting jest prostym modu³em Apacza, s³u¿±cym do zapisywania
+statystyk ruchu do relacyjnej bazy danych (ilo¶æ bajtów
+wchodz±cych/wychodz±cych na ¿±danie http)
 
 %prep 
 %setup -q -n mod_%{mod_name}-%{version}
