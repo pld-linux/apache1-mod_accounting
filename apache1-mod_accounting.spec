@@ -10,12 +10,11 @@ Group:		Networking/Daemons
 Source0:	http://prdownloads.sourceforge.net/mod-acct/mod_accounting-%{version}.tar.gz
 Source1:	%{name}.conf
 URL:		http://sourceforge.net/projects/mod-acct/
-BuildRequires:	%{apxs}
 BuildRequires:	apache(EAPI)-devel
+BuildRequires:	mysql-devel
+BuildRequires:	postgresql-devel
 Prereq:		%{_sbindir}/apxs
 Requires:	apache(EAPI)
-BuildRequires:	postgresql-devel
-BuildRequires:	mysql-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
