@@ -4,7 +4,7 @@ Summary:	Apache module: record traffic statistics into a database
 Summary(pl):	Modu³ do apache: zapisuje statystyki ruchu do bazy danych
 Name:		apache-mod_%{mod_name}
 Version:	0.4
-Release:	1
+Release:	2
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://prdownloads.sourceforge.net/mod-acct/mod_accounting-%{version}.tar.gz
@@ -56,7 +56,7 @@ fi
 %preun
 if [ "$1" = "0" ]; then
 	%{_sbindir}/apxs -e -A -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
-        grep -v -q "^Include.*mod_accounting.conf" /etc/httpd/httpd.conf > \
+        grep -v "^Include.*mod_accounting.conf" /etc/httpd/httpd.conf > \
                 /etc/httpd/httpd.conf.tmp
         mv -f /etc/httpd/httpd.conf.tmp /etc/httpd/httpd.conf
 	if [ -f /var/lock/subsys/httpd ]; then
