@@ -26,11 +26,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 mod_accounting is a simple Apache module that can record traffic
-statistics into a database (bytes in/out per http request)
+statistics into a database (bytes in/out per HTTP request)
 
 %description -l pl
 mod_accounting to prosty modu³ Apache pozwalaj±cy na zapisywanie
-informacji o ruchu http do bazy danych (bajty
+informacji o ruchu HTTP do bazy danych (bajty
 przychodz±ce/wychodz±ce).
 
 %prep
