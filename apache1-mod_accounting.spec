@@ -33,10 +33,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
 
 %description
-Apache module: Automatically updates files in a CVS-based webtree.
+mod_accounting is a simple Apache module that can record traffic statistics
+into a database (bytes in/out per http request).
 
 %description -l pl
-Modu³ do apache: Automatyczne uaktualnianie plików z drzewa CVS.
+mod_accounting jest prostym modu³em Apacza, s³u¿±cym do zapisywania statystyk
+ruchu do relacyjnej bazy danych (ilo¶æ bajtów wchodz±cych/wychodz±cych na
+¿adanie http)
 
 %prep 
 %setup -q -n mod_%{mod_name}-%{version}
