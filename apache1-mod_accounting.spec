@@ -7,7 +7,7 @@ Version:	0.4
 Release:	4
 License:	BSD
 Group:		Networking/Daemons
-Source0:	http://prdownloads.sourceforge.net/mod-acct/mod_accounting-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/mod-acct/mod_accounting-%{version}.tar.gz
 Source1:	%{name}.conf
 URL:		http://sourceforge.net/projects/mod-acct/
 BuildRequires:	apache(EAPI)-devel
