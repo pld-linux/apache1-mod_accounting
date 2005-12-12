@@ -15,10 +15,10 @@ Source0:	http://dl.sourceforge.net/mod-acct/mod_accounting-%{version}.tar.gz
 # Source0-md5:	fc045bbdc5ae32241765fea2967a63fb
 Source1:	%{name}.conf
 URL:		http://sourceforge.net/projects/mod-acct/
+%{?with_ipv6:BuildRequires:	apache1(ipv6)-devel}
 BuildRequires:	apache1-devel >= 1.3.33-2
 BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
-%{?with_ipv6:BuildRequires:	apache1(ipv6)-devel}
 %{!?with_ipv6:BuildConflicts:	apache1(ipv6)-devel}
 Requires:	apache1 >= 1.3.33-2
 Obsoletes:	apache-mod_%{mod_name} <= %{version}
@@ -70,5 +70,5 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc README ChangeLog
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/conf.d/*_mod_%{mod_name}.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/conf.d/*_mod_%{mod_name}.conf
 %attr(755,root,root) %{_pkglibdir}/*
