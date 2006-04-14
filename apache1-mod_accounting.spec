@@ -22,7 +22,7 @@ BuildRequires:	postgresql-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
 %{!?with_ipv6:BuildConflicts:	apache1(ipv6)-devel}
 Requires:	apache1 >= 1.3.33-2
-Obsoletes:	apache-mod_accounting <= %{version}
+Obsoletes:	apache-mod_accounting <= 0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR 2>/dev/null)
