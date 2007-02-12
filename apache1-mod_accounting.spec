@@ -5,7 +5,7 @@
 %define		mod_name	accounting
 %define 	apxs		%{_sbindir}/apxs1
 Summary:	Apache module: record traffic statistics into a database
-Summary(pl):	Modu³ do apache: zapisuje statystyki ruchu do bazy danych
+Summary(pl.UTF-8):   ModuÅ‚ do apache: zapisuje statystyki ruchu do bazy danych
 Name:		apache1-mod_%{mod_name}
 Version:	0.5
 Release:	0.5
@@ -32,10 +32,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 mod_accounting is a simple Apache module that can record traffic
 statistics into a database (bytes in/out per HTTP request)
 
-%description -l pl
-mod_accounting to prosty modu³ Apache pozwalaj±cy na zapisywanie
+%description -l pl.UTF-8
+mod_accounting to prosty moduÅ‚ Apache pozwalajÄ…cy na zapisywanie
 informacji o ruchu HTTP do bazy danych (bajty
-przychodz±ce/wychodz±ce).
+przychodzÄ…ce/wychodzÄ…ce).
 
 %prep
 %setup -q -n mod_%{mod_name}-%{version}
