@@ -5,7 +5,7 @@
 %define		mod_name	accounting
 %define 	apxs		%{_sbindir}/apxs1
 Summary:	Apache module: record traffic statistics into a database
-Summary(pl.UTF-8):   Moduł do apache: zapisuje statystyki ruchu do bazy danych
+Summary(pl.UTF-8):	Moduł do apache: zapisuje statystyki ruchu do bazy danych
 Name:		apache1-mod_%{mod_name}
 Version:	0.5
 Release:	0.5
