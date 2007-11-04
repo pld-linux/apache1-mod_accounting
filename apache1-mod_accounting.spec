@@ -16,7 +16,7 @@ Source0:	http://dl.sourceforge.net/mod-acct/mod_accounting-%{version}.tar.gz
 Source1:	%{name}.conf
 URL:		http://sourceforge.net/projects/mod-acct/
 %{?with_ipv6:BuildRequires:	apache1(ipv6)-devel}
-BuildRequires:	apache1-devel >= 1.3.33-2
+BuildRequires:	apache1-devel >= 1.3.39
 BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
